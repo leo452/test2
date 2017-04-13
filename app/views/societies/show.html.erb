@@ -1,0 +1,31 @@
+<h1 class="titulo">Membresía </h1>
+<p>
+  <strong>Nombre:</strong>
+  <%= @society.nombre %>
+</p>
+
+<p>
+  <strong>Descripcio:</strong>
+  <%= @society.descripcio %>
+</p>
+
+<p>
+  <strong>Valor anual:</strong>
+  <%= @society.valor_anual %>
+</p>
+
+
+<p>
+  <strong>Valor mensual:</strong>
+  <%= @society.valor_mensual %>
+</p>
+<%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+            societies_path, class: 'btn btn-success btn-sm'%>
+
+<%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
+            edit_society_path(@society), class: 'btn btn-success btn-sm'%>
+
+
+
+
+

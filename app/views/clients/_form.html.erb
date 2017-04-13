@@ -1,0 +1,57 @@
+<%= form_for(@client) do |f| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="jumbotron nuevo div-formulario" >
+<div class="row" >
+  <div class="form-group col-md-offset-1">
+    <%= f.label :tipo_documento %><br>
+
+    <%= f.select :tipo_documento, ['C.C', 'T.I', 'C.E'], :prompt => 'Tipo de documento'  %>
+  </div>
+  <div class="form-group col-md-offset-1">
+    <%= f.label :numero_documento %><br>
+    <%= f.number_field :numero_documento, autofocus: true, class: 'form-control', :required => true %>
+  </div>
+  <div class="form-group col-md-offset-1">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre, autofocus: true, class: 'form-control', :required => true %>
+  </div>
+  <div class="form-group col-md-offset-1">
+    <%= f.label :apellido %><br>
+    <%= f.text_field :apellido, autofocus: true, class: 'form-control', :required => true %>
+  </div>
+  <div class="form-group col-md-offset-1">
+    <%= f.label :correo %><br>
+    <%= f.email_field :correo, autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="form-group col-md-offset-1">
+    <%= f.label :direccion %><br>
+    <%= f.text_field :direccion, autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="form-group col-md-offset-1">
+    <%= f.label :telefono %><br>
+    <%= f.number_field :telefono, autofocus: true, class: 'form-control' %>
+  </div>
+ 
+  <div class="col-md-2 col-md-offset-1 ">
+            <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+            <i class="fa fa-check-square" aria-hidden="true"></i> Guardar
+            <% end %>
+        </div>
+<div class="col-md-2 col-md-offset-1">
+<%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+            clients_path, class: 'btn btn-success btn-lg'%>
+</div>
+
+<% end %>
+  </div>
+</div>

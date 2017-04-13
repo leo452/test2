@@ -1,0 +1,36 @@
+
+
+<h1 class="titulo">Recibos</h1>
+
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Valor</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @receipts.each do |receipt| %>
+      <tr>
+        <td><%= receipt.fecha %></td>
+        <td><%= receipt.valor %></td>
+
+
+
+
+        <td><%= link_to 'Ver', receipt,class:"btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_receipt_path(receipt), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Eliminar',receipt, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Receipt', new_receipt_path %>

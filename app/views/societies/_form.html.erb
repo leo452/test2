@@ -1,0 +1,68 @@
+<%= form_for(@society) do |f| %>
+  <% if @society.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@society.errors.count, "error") %> prohibited this society from being saved:</h2>
+
+      <ul>
+      <% @society.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="jumbotron div-formulario nuevo">
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre,autofocus: true, class: 'form-control', :required => true%>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcio,autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :valor_anual %><br>
+    <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <%= f.number_field :valor_anual,autofocus: true, class: "form-control" %>
+    <span class="input-group-addon">.00</span>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :valor_mensual %><br>
+
+    <div class="input-group">
+      <span class="input-group-addon">$</span>
+      <%= f.number_field :valor_mensual,autofocus: true, class: 'form-control' %>
+      <span class="input-group-addon">.00</span>
+    </div>
+  </div>
+
+  <div align="center">
+      <%= link_to_add_association 'Añadir descuento', f,:discounts,
+                                  'data-association-insertion-node' => "#discounts-category ",
+                                  'data-association-insertion-method' => "append",
+                                    :wrap_object => Proc.new {|discount| discount.build_category; discount }%>
+      <hr/>
+      <fieldset id="discounts-category">
+        <%= f.fields_for :discounts do |discount| %>
+            <%= render partial: "discount_fields", locals: {f:discount} %>
+        <%end%>
+      </fieldset>
+  </div>
+<br>
+
+<div align="center">
+  <div class="col-md-2 col-md-offset-1 " align="center">
+    <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+        <i class="fa fa-check-square" aria-hidden="true"></i> Guardar
+    <% end %>
+  </div>
+  <div class="col-md-2 col-md-offset-1" align="center">
+    <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+                societies_path, class: 'btn btn-success btn-lg'%>
+  </div>
+</div>
+<% end %>
+</div>

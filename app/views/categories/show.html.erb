@@ -1,0 +1,21 @@
+<div class="container">
+<p>
+  <strong>Nombre:</strong>
+  <%= @category.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @category.descripcion %>
+</p>
+
+
+<div class="col-md-2 col-md-offset-1">
+  <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Editar".html_safe,
+              edit_category_path(@category), class: 'btn btn-success btn-lg'%>
+  </div>
+  <div class="col-md-2 col-md-offset-1">
+    <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+                categories_path, class: 'btn btn-success btn-lg'%>
+  </div>
+</div>
